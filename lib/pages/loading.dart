@@ -12,7 +12,19 @@ class _LoadingState extends State<Loading> {
 
      Response response = await get('http://worldtimeapi.org/api/timezone/Africa/Nairobi');
      Map data = jsonDecode(response.body);
-     print(data);
+     //print(data);
+
+     //properties form data
+    String datetime = data['datetime'];
+    String offset = data['utc_offset'].substring(1,3);
+   // print(datetime);
+    print(offset);
+
+    //datetime object
+    DateTime now = DateTime.parse(datetime);
+    now.add(Duration(hours: int.parse(offset)));
+    print(now);
+
 
   }
 
