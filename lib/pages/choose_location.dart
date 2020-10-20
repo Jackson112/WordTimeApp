@@ -6,13 +6,22 @@ class ChooseLocation extends StatefulWidget {
 }
 
 class _ChooseLocationState extends State<ChooseLocation> {
+
   void getData() async {
 
     //simulate network request for a username
-    Future.delayed(Duration(seconds: 3), () {
+    await Future.delayed(Duration(seconds: 3), () {
       print('Jack');
     });
+
+    await Future.delayed(Duration(seconds: 2), () {
+      print('Teacher, coder, Networker');
+    });
+
+    print('Statement');
   }
+
+
   @override
 
   void initState() {
@@ -21,7 +30,6 @@ class _ChooseLocationState extends State<ChooseLocation> {
 
   }
   Widget build(BuildContext context) {
-
     return Scaffold(
       backgroundColor: Colors.grey[200],
       appBar: AppBar(
