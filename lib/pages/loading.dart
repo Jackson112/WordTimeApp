@@ -15,10 +15,13 @@ class _LoadingState extends State<Loading> {
      WorldTime instance = WorldTime(location: 'Berlin', flag: 'germany.png', url: 'Africa/Nairobi');
      await instance.getTime();
      print(instance.time);
-     setState(() {
-       time = instance.time;
+    Navigator.pushNamed(context, '/home', arguments: {
+      'location': instance.location,
+      'flag': instance.flag,
+      'time': instance.time,
+    });
 
-     });
+
    }
 
   @override
@@ -26,7 +29,6 @@ class _LoadingState extends State<Loading> {
   void initState() {
     super.initState();
     setupWorldTime();
-    print('Hey There');
 
   }
   @override
@@ -34,7 +36,7 @@ class _LoadingState extends State<Loading> {
     return Scaffold(
       body: Padding(
         padding: EdgeInsets.all(50.0),
-        child: Text(time),
+        child: Text('loading'),
       )
     );
   }
