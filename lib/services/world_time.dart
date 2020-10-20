@@ -10,6 +10,7 @@ class WorldTime {
   String location; //location name of the ui
   String time; //the time in that location
   String flag; //url to an asset flag icon
+  String isDay; //checking if there is sun
   String url; //location url for api endpoint
 
   WorldTime({this.location, this.flag, this.url});
