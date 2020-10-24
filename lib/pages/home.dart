@@ -6,24 +6,48 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+
   Map data = {};
 
   @override
   Widget build(BuildContext context) {
 
-    data = ModalRoute.of(context).settings.arguments;
+    data = data.isNotEmpty ? data: ModalRoute.of(context).settings.arguments;
     print(data);
+
+    //set background
+    String bgImage = data['isDaytime'] ? 'day.png' : 'night.png';
+    Color bgColor = data['isDaytime'] ? Colors.blue : Colors.indigo;
+
 
 
     return Scaffold(
-      body: SafeArea(child: Padding(
+      backgroundColor: bgColor,
+      body: SafeArea(
+          child: Container(
+        decoration: BoxDecoration(
+        image:DecorationImage(
+        image: AssetImage('assets/$bgImage'),
+          fit: BoxFit.cover,
+        )
+    ),
+
+          child: Padding(
         padding: const EdgeInsets.fromLTRB(0, 120.0, 0, 0),
         child: Column(
           children: <Widget> [
             FlatButton.icon(
-                onPressed: () {
+                onPressed: () async {
 
-                  Navigator.pushNamed(context, '/location');
+                  dynamic result = await Navigator.pushNamed(context, '/location');
+                  setState(() {
+                    data = {
+                      'time': result['time'],
+                      'location': result['location'],
+                      'isDaytime':result['isDaytime'],
+                      'flag':result['flag'],
+                    };
+                  });
                 },
               icon: Icon(Icons.edit_location),
               label: Text('Edit Location'),
@@ -48,10 +72,11 @@ class _HomeState extends State<Home> {
               style: TextStyle(
                 fontSize: 66.0,
               ),
-            )
+            ),
           ],
         ),
       )),
+      ),
     );
   }
 }

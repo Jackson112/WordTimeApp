@@ -56,6 +56,8 @@ flutter:
     - assets/indonesia.jpg
     - assets/kenya.png
     - assets/tanzania.jpg
+    - night.png
+    - day.png
 
 
   # An image asset can refer to one or more resolution-specific "variants", see

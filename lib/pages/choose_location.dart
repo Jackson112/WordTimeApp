@@ -25,7 +25,7 @@ class _ChooseLocationState extends State<ChooseLocation> {
       'location': instance.location,
       'flag': instance.flag,
       'time': instance.time,
-      'isDay': instance.isDay,
+      'isDaytime': instance.isDaytime,
     });
 
   }
@@ -53,7 +53,6 @@ class _ChooseLocationState extends State<ChooseLocation> {
                 leading: CircleAvatar(
                   backgroundImage: AssetImage('assets/${locations[index].flag}'),
                 ),
-
               ),
             ),
           );

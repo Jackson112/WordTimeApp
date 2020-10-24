@@ -10,28 +10,28 @@ class WorldTime {
   String location; //location name of the ui
   String time; //the time in that location
   String flag; //url to an asset flag icon
-  String isDay; //checking if there is sun
+  bool isDaytime; //checking if there is sun
   String url; //location url for api endpoint
 
   WorldTime({this.location, this.flag, this.url});
 
   Future<void> getTime() async {
     try {
+      // make the request
       Response response = await get('http://worldtimeapi.org/api/timezone/$url');
       Map data = jsonDecode(response.body);
-      //print(data);
 
-      //properties form data
+      // get properties from json
       String datetime = data['datetime'];
       String offset = data['utc_offset'].substring(1,3);
-      print(datetime);
-      print(offset);
 
-      //datetime object
+      // create DateTime object
       DateTime now = DateTime.parse(datetime);
-      now.add(Duration(hours: int.parse(offset)));
+      now = now.add(Duration(hours: int.parse(offset)));
 
-      //set time property
+
+      // set the time property
+      isDaytime = now.hour > 6 && now.hour < 20 ? true : false;
       time = DateFormat.jm().format(now);
     }
 
