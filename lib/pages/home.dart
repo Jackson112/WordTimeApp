@@ -22,6 +22,7 @@ class _HomeState extends State<Home> {
 
 
     return Scaffold(
+
       backgroundColor: bgColor,
       body: SafeArea(
           child: Container(
@@ -37,6 +38,7 @@ class _HomeState extends State<Home> {
         child: Column(
           children: <Widget> [
             FlatButton.icon(
+             color: Colors.white,
                 onPressed: () async {
 
                   dynamic result = await Navigator.pushNamed(context, '/location');
@@ -49,8 +51,14 @@ class _HomeState extends State<Home> {
                     };
                   });
                 },
-              icon: Icon(Icons.edit_location),
-              label: Text('Edit Location'),
+              icon: Icon(Icons.edit_location,
+                color: Colors.black,
+              ),
+              label: Text('Edit Location',
+                  style: TextStyle(
+                  color: Colors.black
+              ),
+              ),
 
             ),
               SizedBox(height: 20.0),
@@ -60,6 +68,7 @@ class _HomeState extends State<Home> {
                 Text(
                   data['location'],
                   style: TextStyle(
+                    color: Colors.white,
                     fontSize: 28.0,
                     letterSpacing: 2.0
                   ),
@@ -70,6 +79,7 @@ class _HomeState extends State<Home> {
             Text(
               data['time'],
               style: TextStyle(
+                color: Colors.white,
                 fontSize: 66.0,
               ),
             ),

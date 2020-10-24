@@ -5,12 +5,14 @@ import 'package:wordtimeapp/pages/choose_location.dart';
 
 
 void main() => runApp(MaterialApp(
+
   initialRoute: '/',
   routes: {
       '/': (context) => Loading(),
       '/home': (context) => Home(),
       '/location': (context) => ChooseLocation(),
       },
+  debugShowCheckedModeBanner: false,
   ));
 
 
