@@ -13,7 +13,7 @@ class _LoadingState extends State<Loading> {
   String time = 'loading';
 
    void setupWorldTime() async {
-     WorldTime instance = WorldTime(location: 'Berlin', flag: 'germany.png', url: 'Africa/Nairobi');
+     WorldTime instance = WorldTime(location: 'Tanzania', flag: 'tanzania.jpg', url: 'Africa/Nairobi');
      await instance.getTime();
      print(instance.time);
     Navigator.pushNamed(context, '/home', arguments: {

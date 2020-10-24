@@ -36,8 +36,8 @@ class WorldTime {
     }
 
     catch (e) {
-      print('caught error: $e');
-      time = 'could not get time data';
+      print(e);
+      time = 'could not get time';
     }
   }
 }
